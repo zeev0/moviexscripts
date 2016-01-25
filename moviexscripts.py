@@ -141,7 +141,7 @@ class Bot:
     def prep_tweet(self, tweet_text):
         words = tweet_text.split(' ')
         i = 0
-        while i < len(words) and words[i].isupper() and words[i] != 'I':
+        while i < len(words) and words[i].isupper() and words[i] != 'I' and words[i] != 'A':
             i += 1
         if i == 0: return tweet_text
         if i == len(words): return ' '.join(words)
