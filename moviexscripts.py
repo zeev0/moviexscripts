@@ -63,10 +63,9 @@ class Bot:
         # file i/o
         self.config['storage'] = FileStorage()
 
-        # filename for the script
         self.config['filename'] = filename
 
-        # initialize state
+        # recover state
         try:
             with self.config['storage'].read(self.screen_name) as f:
                 self.state = pickle.load(f)
