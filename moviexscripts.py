@@ -80,6 +80,7 @@ class Bot:
             self.state['last_tweet_time'] = 1
         if 'failure_count' not in self.state:
             self.state['failure_count'] = 0
+        self.state['failure_count'] = 0
 
         logging.info('Bot initialized!')
 
@@ -131,7 +132,7 @@ class Bot:
             except tweepy.TweepError as e:
                 self.state['failure_count'] += 1
                 self.log_tweepy_error('Can\'t post status', e)
-                time.sleep(5) # wait a bit before we try to tweet again
+                time.sleep(10 * Bot.MINUTE) # wait a bit before we try to tweet again
                 if self.state['failure_count'] > Bot.MAX_FAILURES:
                     self.log('Maximum amount of failures('+ str(Bot.MAX_FAILURES) +') reached. Exiting...')
                     exit()
